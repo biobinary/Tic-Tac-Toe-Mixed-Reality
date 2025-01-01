@@ -1,23 +1,19 @@
 using UnityEngine;
 
+public enum EntityType {
+    PLAYER, BOT
+}
+
+public enum PieceType {
+    CROSS, CIRCLE
+}
+
+public enum AlgorithmType {
+    MINIMAX, ALPHABETA, NONE
+}
+
 public class GameManager : MonoBehaviour
 {
-
-    public enum ENTITIES {
-        PLAYER,
-        BOT
-    }
-
-    public enum PIECE {
-        CROSS,
-        CIRCLE
-    }
-
-    public enum ALGORITM {
-        MINIMAX,
-        ALPHABETA,
-        NONE
-    }
 
     public static GameManager Instance;
 
@@ -28,9 +24,9 @@ public class GameManager : MonoBehaviour
     public System.Action changeStats;
 
     // Game Properties
-    public PIECE playerPiece {  get; private set; }
-    public ALGORITM algorithmUsed {  get; private set; }
-    public ENTITIES currentTurn { get; private set; }
+    public PieceType playerPiece {  get; private set; }
+    public AlgorithmType algorithmUsed {  get; private set; }
+    public EntityType currentTurn { get; private set; }
 
     // Player Statistics
     public int winAmount { get; private set; } = 0;
@@ -51,7 +47,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Configure the game first before starting it
-    public void StartGame(PIECE playerPiece, ALGORITM algorithmUsed) {
+    public void StartGame(PieceType playerPiece, AlgorithmType algorithmUsed) {
 
         this.playerPiece = playerPiece;
         this.algorithmUsed = algorithmUsed;
@@ -66,10 +62,10 @@ public class GameManager : MonoBehaviour
     public void ChangeTurn() {
 
         if (m_isFirstTurn) {
-            currentTurn = (Random.Range(0, 2) == 1) ? ENTITIES.PLAYER : ENTITIES.BOT;
+            currentTurn = (Random.Range(0, 2) == 1) ? EntityType.PLAYER : EntityType.BOT;
             m_isFirstTurn = false;
         } else {
-            currentTurn = currentTurn == ENTITIES.PLAYER ? ENTITIES.BOT : ENTITIES.PLAYER;
+            currentTurn = currentTurn == EntityType.PLAYER ? EntityType.BOT : EntityType.PLAYER;
         }
 
         changeTurn?.Invoke();

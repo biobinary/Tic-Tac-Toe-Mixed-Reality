@@ -32,7 +32,7 @@ public class GameWindow : MonoBehaviour
     }
 
     private void ConfigureTurn() {
-        if (GameManager.Instance.currentTurn != GameManager.ENTITIES.BOT) {
+        if (GameManager.Instance.currentTurn != EntityType.BOT) {
             m_playerTurnStatus.color = m_activeColor;
             m_botTurnStatus.color = m_deactiveColor;
         } else {

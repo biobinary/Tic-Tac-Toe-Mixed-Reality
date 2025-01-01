@@ -18,32 +18,32 @@ public class ConfigurationWindow : MonoBehaviour
     private void OnButtonContinue(Toggle change) {
 
         // Configure Player Piece
-        GameManager.PIECE playerPiece;
+        PieceType playerPiece;
 
         switch (m_pieceSelector.GetFirstActiveToggle().name.ToLower()) {
             case "cross":
-                playerPiece = GameManager.PIECE.CROSS;
+                playerPiece = PieceType.CROSS;
                 break;
             case "circle":
-                playerPiece = GameManager.PIECE.CIRCLE;
+                playerPiece = PieceType.CIRCLE;
                 break;
             default:
-                playerPiece = Random.Range(0, 2) == 1 ? GameManager.PIECE.CROSS : GameManager.PIECE.CIRCLE;
+                playerPiece = Random.Range(0, 2) == 1 ? PieceType.CROSS : PieceType.CIRCLE;
                 break;
         }
 
         // Configure Algorithm Used
-        GameManager.ALGORITM algorithmUsed;
+        AlgorithmType algorithmUsed;
 
         switch (m_algorithmSelector.GetFirstActiveToggle().name.ToLower()) {
             case "minimax":
-                algorithmUsed = GameManager.ALGORITM.MINIMAX;
+                algorithmUsed = AlgorithmType.MINIMAX;
                 break;
             case "alphabeta":
-                algorithmUsed = GameManager.ALGORITM.ALPHABETA;
+                algorithmUsed = AlgorithmType.ALPHABETA;
                 break;
             default:
-                algorithmUsed = GameManager.ALGORITM.NONE;
+                algorithmUsed = AlgorithmType.NONE;
                 break;
         }
 
