@@ -17,10 +17,8 @@ public class BoardGeneralManager : MonoBehaviour
     public void RecenterBoard() {
         
         transform.position = m_cameraRig.transform.position + m_cameraRig.transform.forward * m_recenterDistance;
-        transform.rotation = Quaternion.LookRotation(transform.position - m_cameraRig.transform.position) * Quaternion.Euler(-90.0f, 0.0f, 0.0f);
-        
-        Vector3 rotatedOffset = Quaternion.Euler(-90.0f, 0.0f, 0.0f) * m_recenterOffset;
-        transform.position = transform.position + transform.TransformDirection(rotatedOffset);
+        transform.rotation = Quaternion.LookRotation(transform.position - m_cameraRig.transform.position);
+        transform.position = transform.position + transform.TransformDirection(m_recenterOffset);
 
     }
 
