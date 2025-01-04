@@ -1,3 +1,4 @@
+using Oculus.Interaction;
 using UnityEngine;
 
 public class PlayerController : Entity {
@@ -9,6 +10,8 @@ public class PlayerController : Entity {
     }
 
     protected override void GeneratePiece() {
-        Instantiate(m_piecePrefab, m_spawnPosition.position, Quaternion.identity);
+        GameObject obj = Instantiate(m_piecePrefab, m_spawnPosition.position, Quaternion.identity);
+        PointableElement pointableElement = obj.GetComponentInChildren<Grabbable>();
+        GameManager.Instance.playerPieceGenerated?.Invoke(pointableElement);
     }
 }

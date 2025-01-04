@@ -1,3 +1,4 @@
+using Oculus.Interaction;
 using UnityEngine;
 
 public enum EntityType {
@@ -17,11 +18,14 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
-    // Event Callback
+    // Base Event Callback
     public System.Action gameStart;
     public System.Action gameReset;
     public System.Action changeTurn;
     public System.Action changeStats;
+
+    // Custom Event Callback
+    public System.Action<PointableElement> playerPieceGenerated;
 
     // Game Properties
     public PieceType playerPiece {  get; private set; }
