@@ -15,14 +15,20 @@ public class GameWindow : MonoBehaviour
     [Header("Player Statistics")]
     [SerializeField] private GameObject m_playerStatistics;
 
+    private Manager m_manager;
+
+    private void Awake() {
+        m_manager = FindAnyObjectByType<Manager>();
+    }
+
     private void OnEnable() {
-        GameManager.Instance.changeTurn += ConfigureTurn;
-        GameManager.Instance.changeStats += ConfigureStats;
+        m_manager.onChangeTurn += ConfigureTurn;
+        m_manager.onChangeStats += ConfigureStats;
     }
 
     private void OnDisable() {
-        GameManager.Instance.changeTurn -= ConfigureTurn;
-        GameManager.Instance.changeStats -= ConfigureStats;
+        m_manager.onChangeTurn -= ConfigureTurn;
+        m_manager.onChangeStats -= ConfigureStats;
     }
 
     private void ConfigureStats() {
@@ -32,13 +38,17 @@ public class GameWindow : MonoBehaviour
     }
 
     private void ConfigureTurn() {
-        if (GameManager.Instance.currentTurn != EntityType.BOT) {
+
+        if (m_manager.currentTurn != GlobalType.EntityType.BOT) {
             m_playerTurnStatus.color = m_activeColor;
             m_botTurnStatus.color = m_deactiveColor;
+
         } else {
             m_playerTurnStatus.color = m_deactiveColor;
             m_botTurnStatus.color = m_activeColor;
+        
         }
+
     }
 
 }

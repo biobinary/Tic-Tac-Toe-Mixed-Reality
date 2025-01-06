@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LockBoardButton : MonoBehaviour
 {
 
-    [SerializeField] private BoardGeneralManager m_board;
+    [SerializeField] private UtilityManager m_board;
 
     [Header("Icon Properties")]
     [SerializeField] private Image m_icon;

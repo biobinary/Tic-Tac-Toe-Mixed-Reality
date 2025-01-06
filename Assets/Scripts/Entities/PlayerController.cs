@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerController : Entity {
 
     [SerializeField] private Transform m_spawnPosition;
+    [SerializeField] private string m_tagName = "PlayerPiece";
 
     public override void DoTurn() {
         GeneratePiece();
@@ -11,7 +12,7 @@ public class PlayerController : Entity {
 
     protected override void GeneratePiece() {
         GameObject obj = Instantiate(m_piecePrefab, m_spawnPosition.position, Quaternion.identity);
-        PointableElement pointableElement = obj.GetComponentInChildren<Grabbable>();
-        GameManager.Instance.playerPieceGenerated?.Invoke(pointableElement);
+        obj.tag = m_tagName;
     }
+
 }

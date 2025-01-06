@@ -3,26 +3,28 @@ using UnityEngine;
 public class EntityManager : MonoBehaviour
 {
 
+    [Header("Piece")]
     [SerializeField] private GameObject m_crossPiece;
     [SerializeField] private GameObject m_circlePiece;
 
-    private PlayerController m_playerController;
-    private BotController m_botController;
+    [Header("Controller")]
+    [SerializeField] private PlayerController m_playerController;
+    [SerializeField] private BotController m_botController;
+
+    private Manager m_manager;
 
     private void Awake() {
-        m_playerController = FindAnyObjectByType<PlayerController>();
-        m_botController = FindAnyObjectByType<BotController>();
+        m_manager = FindAnyObjectByType<Manager>();
     }
 
-    void Start()
-    {
-        GameManager.Instance.gameStart += OnGameStart;
-        GameManager.Instance.changeTurn += OnChangeTurn;
+    private void Start() {
+        m_manager.onGameStart += OnGameStart;
+        m_manager.onChangeTurn += OnChangeTurn;
     }
 
     private void OnGameStart() {
 
-        if( GameManager.Instance.playerPiece == PieceType.CROSS ) {
+        if (m_manager.playerPiece == GlobalType.PieceType.CROSS) {
             m_playerController.SetPiecePrefab(m_crossPiece);
             m_botController.SetPiecePrefab(m_circlePiece);
 
@@ -36,7 +38,7 @@ public class EntityManager : MonoBehaviour
 
     private void OnChangeTurn() {
 
-        if (GameManager.Instance.currentTurn == EntityType.PLAYER )
+        if (m_manager.currentTurn == GlobalType.EntityType.PLAYER)
             m_playerController.DoTurn();
         else
             m_botController.DoTurn();

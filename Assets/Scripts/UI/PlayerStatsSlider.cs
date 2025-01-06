@@ -18,6 +18,12 @@ public class PlayerStatsSlider : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_firstLabel;
     [SerializeField] private TextMeshProUGUI m_lastLabel;
 
+    private Manager m_manager;
+
+    private void Awake() {
+        m_manager = FindAnyObjectByType<Manager>();
+    }
+
     private void Start() {
 
         m_slider.value = 0;
@@ -31,22 +37,22 @@ public class PlayerStatsSlider : MonoBehaviour
 
     public void UpdateStats() {
 
-        int totalGame = GameManager.Instance.winAmount + GameManager.Instance.loseAmount + GameManager.Instance.drawAmount;
+        int totalGame = m_manager.winAmount + m_manager.loseAmount + m_manager.drawAmount;
         m_slider.maxValue = totalGame;
         m_lastLabel.text = totalGame.ToString();
 
         switch( sliderType ) {
             case SLIDER_TYPE.WIN:
-                m_slider.value = GameManager.Instance.winAmount;
-                m_firstLabel.text = GameManager.Instance.winAmount.ToString();
+                m_slider.value = m_manager.winAmount;
+                m_firstLabel.text = m_manager.winAmount.ToString();
                 break;
             case SLIDER_TYPE.LOSE:
-                m_slider.value = GameManager.Instance.loseAmount;
-                m_firstLabel.text = GameManager.Instance.loseAmount.ToString();
+                m_slider.value = m_manager.loseAmount;
+                m_firstLabel.text = m_manager.loseAmount.ToString();
                 break;
             case SLIDER_TYPE.DRAW:
-                m_slider.value = GameManager.Instance.drawAmount;
-                m_firstLabel.text = GameManager.Instance.drawAmount.ToString();
+                m_slider.value = m_manager.drawAmount;
+                m_firstLabel.text = m_manager.drawAmount.ToString();
                 break;
         }
 

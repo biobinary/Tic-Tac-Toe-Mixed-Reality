@@ -4,12 +4,16 @@ using UnityEngine.UI;
 public class ConfigurationWindow : MonoBehaviour
 {
 
-    [SerializeField] private GameManager m_gameManager;
-
     [Header("Game Configuration")]
     [SerializeField] private ToggleGroup m_pieceSelector;
     [SerializeField] private ToggleGroup m_algorithmSelector;
     [SerializeField] private Toggle m_continueButton;
+
+    private Manager m_manager;
+
+    private void Awake() {
+        m_manager = FindAnyObjectByType<Manager>();
+    }
 
     private void Start() {
         m_continueButton.onValueChanged.AddListener(delegate { OnButtonContinue(m_continueButton); });
@@ -18,36 +22,37 @@ public class ConfigurationWindow : MonoBehaviour
     private void OnButtonContinue(Toggle change) {
 
         // Configure Player Piece
-        PieceType playerPiece;
+        GlobalType.PieceType playerPiece;
 
         switch (m_pieceSelector.GetFirstActiveToggle().name.ToLower()) {
             case "cross":
-                playerPiece = PieceType.CROSS;
+                playerPiece = GlobalType.PieceType.CROSS;
                 break;
             case "circle":
-                playerPiece = PieceType.CIRCLE;
+                playerPiece = GlobalType.PieceType.CIRCLE;
                 break;
             default:
-                playerPiece = Random.Range(0, 2) == 1 ? PieceType.CROSS : PieceType.CIRCLE;
+                playerPiece = Random.Range(0, 2) == 1 ? GlobalType.PieceType.CROSS : GlobalType.PieceType.CIRCLE;
                 break;
         }
 
         // Configure Algorithm Used
-        AlgorithmType algorithmUsed;
+        GlobalType.AlgorithmType algorithmUsed;
 
         switch (m_algorithmSelector.GetFirstActiveToggle().name.ToLower()) {
             case "minimax":
-                algorithmUsed = AlgorithmType.MINIMAX;
+                algorithmUsed = GlobalType.AlgorithmType.MINIMAX;
                 break;
             case "alphabeta":
-                algorithmUsed = AlgorithmType.ALPHABETA;
+                algorithmUsed = GlobalType.AlgorithmType.ALPHABETA;
                 break;
             default:
-                algorithmUsed = AlgorithmType.NONE;
+                algorithmUsed = GlobalType.AlgorithmType.NONE;
                 break;
         }
 
-        GameManager.Instance.StartGame(playerPiece, algorithmUsed);
+        m_manager.StartGame(playerPiece, algorithmUsed);
+        //GameManager.Instance.StartGame(playerPiece, algorithmUsed);
 
     }
 

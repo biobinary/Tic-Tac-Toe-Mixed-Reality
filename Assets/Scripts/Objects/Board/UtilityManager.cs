@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BoardGeneralManager : MonoBehaviour
+public class UtilityManager : MonoBehaviour
 {
 
     [SerializeField] private GameObject m_cameraRig; // XR Camera, not the origin rig

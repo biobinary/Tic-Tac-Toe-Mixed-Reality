@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class RecenterBoardButton : MonoBehaviour
 {
 
-    [SerializeField] private BoardGeneralManager m_board; 
+    [SerializeField] private UtilityManager m_board; 
     private Toggle m_toggle;
     
     private void Awake() {

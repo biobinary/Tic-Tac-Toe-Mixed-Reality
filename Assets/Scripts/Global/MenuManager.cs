@@ -7,9 +7,15 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private ConfigurationWindow m_configurationWindow;
     [SerializeField] private GameWindow m_gameWindow;
 
+    private Manager m_manager;
+
+    private void Awake() {
+        m_manager = FindAnyObjectByType<Manager>();
+    }
+
     private void Start() {
-        GameManager.Instance.gameStart += OnGameStart;
-        GameManager.Instance.gameReset += OnGameReset;
+        m_manager.onGameStart += OnGameStart;
+        m_manager.onGameReset += OnGameReset;
         OnGameReset();
     }
 
