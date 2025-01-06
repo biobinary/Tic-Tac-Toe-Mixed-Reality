@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 58ffc31a9bfdaf64a9bc307672449a15
+guid: 05473970c628fe54c8abfa7af37d8d34
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -88,7 +88,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.002
+    globalScale: 0.2
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
