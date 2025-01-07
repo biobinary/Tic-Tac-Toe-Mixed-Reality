@@ -5,7 +5,7 @@ public abstract class Entity : MonoBehaviour {
     protected GameObject m_piecePrefab;
     protected Manager m_manager;
 
-    protected void Awake() {
+    protected virtual void Awake() {
         m_manager = FindAnyObjectByType<Manager>();
     }
 

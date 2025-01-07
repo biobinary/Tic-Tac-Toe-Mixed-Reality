@@ -52,7 +52,6 @@ public class ConfigurationWindow : MonoBehaviour
         }
 
         m_manager.StartGame(playerPiece, algorithmUsed);
-        //GameManager.Instance.StartGame(playerPiece, algorithmUsed);
 
     }
 

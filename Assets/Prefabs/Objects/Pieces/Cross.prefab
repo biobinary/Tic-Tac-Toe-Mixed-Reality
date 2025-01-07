@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interactableGameObject: {fileID: 6607886836369746983}
   m_visualGameObject: {fileID: 1425067314439532620}
+  m_stashOffset: {x: 0, y: 0.0115, z: 0}
   isSelected: 0
 --- !u!54 &4376872926969023411
 Rigidbody:

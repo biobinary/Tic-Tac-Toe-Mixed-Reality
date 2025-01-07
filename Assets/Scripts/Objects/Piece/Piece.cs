@@ -6,11 +6,27 @@ public class Piece : MonoBehaviour
     
     [SerializeField] private GameObject m_interactableGameObject;
     [SerializeField] private GameObject m_visualGameObject;
+    [SerializeField] private Vector3 m_stashOffset = Vector3.zero;
 
     [HideInInspector] public bool isSelected = false;
 
     // Event
     public System.Action onUnselect;
+
+    private Manager m_manager;
+
+    private void Awake() {
+        m_manager = FindAnyObjectByType<Manager>();
+    }
+
+    private void Start() {
+        m_manager.onGameReset += OnReset;
+    }
+
+    private void OnReset() {
+        m_manager.onGameReset -= OnReset;
+        Destroy(gameObject);
+    }
 
     public void Stash(Transform newParent) {
 
@@ -18,8 +34,8 @@ public class Piece : MonoBehaviour
         GetComponent<Collider>().enabled = false;
 
         gameObject.transform.parent = newParent;
-        gameObject.transform.localPosition = Vector3.zero;
-        gameObject.transform.rotation = Quaternion.identity;
+        gameObject.transform.localPosition = Vector3.zero + m_stashOffset;
+        gameObject.transform.localRotation = Quaternion.identity;
 
     }
 

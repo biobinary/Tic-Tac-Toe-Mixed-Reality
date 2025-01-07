@@ -15,8 +15,8 @@ public class MenuManager : MonoBehaviour
 
     private void Start() {
         m_manager.onGameStart += OnGameStart;
-        m_manager.onGameReset += OnGameReset;
-        OnGameReset();
+        m_manager.onResetConfiguration += OnConfigureGame;
+        OnConfigureGame();
     }
 
     private void OnGameStart() {
@@ -24,7 +24,7 @@ public class MenuManager : MonoBehaviour
         m_gameWindow.gameObject.SetActive(true);
     }
 
-    private void OnGameReset() {
+    private void OnConfigureGame() {
         m_configurationWindow.gameObject.SetActive(true);
         m_gameWindow.gameObject.SetActive(false);
     }

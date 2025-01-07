@@ -32,7 +32,17 @@ public class CellManager : MonoBehaviour
         }
 
         m_manager.onGameStart += OnGameStart;
+        m_manager.onGameReset += OnGameReset;
         m_highlightMesh.SetActive(false);
+
+    }
+
+    private void OnGameReset() {
+        
+        m_usedCells.Clear();
+        foreach (var cell in m_cells) {
+            cell.EnableTrigger();
+        }
 
     }
 

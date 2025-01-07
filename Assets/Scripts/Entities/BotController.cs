@@ -10,6 +10,18 @@ public class BotController : Entity {
 
     private string[][] m_boardState;
     private int indexPicked = -1;
+    private Coroutine m_currentOnGoingTask = null;
+
+    private void Start() {
+        m_manager.onGameReset += OnGameReset;
+    }
+
+    private void OnGameReset() {
+        if (m_currentOnGoingTask != null) {
+            StopCoroutine(m_currentOnGoingTask);
+            m_currentOnGoingTask = null;
+        }
+    }
 
     public override void DoTurn() {
 
@@ -23,7 +35,7 @@ public class BotController : Entity {
                 AlphaBeta();
                 break;
             default:
-                StartCoroutine(RandomMove());
+                m_currentOnGoingTask = StartCoroutine(RandomMove());
                 break;
         }
 
@@ -57,6 +69,7 @@ public class BotController : Entity {
     }
 
     protected override void GeneratePiece() {
+        m_currentOnGoingTask = null;
         GameObject obj = Instantiate(m_piecePrefab);
         m_cellManager.StashPiece(indexPicked, obj.GetComponent<Piece>(), EntityType.BOT);
     }
