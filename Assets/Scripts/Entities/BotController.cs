@@ -69,9 +69,15 @@ public class BotController : Entity {
     }
 
     protected override void GeneratePiece() {
+        
         m_currentOnGoingTask = null;
+        
         GameObject obj = Instantiate(m_piecePrefab);
-        m_cellManager.StashPiece(indexPicked, obj.GetComponent<Piece>(), EntityType.BOT);
+        Piece piece = obj.GetComponent<Piece>();
+
+        piece.isPlayer = false;
+        m_cellManager.InjectPiece(piece, indexPicked);
+    
     }
 
 }

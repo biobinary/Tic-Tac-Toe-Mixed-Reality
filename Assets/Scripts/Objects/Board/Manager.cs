@@ -65,7 +65,7 @@ public class Manager : MonoBehaviour
     public void ChangeTurn() {
 
         if (m_isFirstTurn) {
-            currentTurn = (Random.Range(0, 2) == 1) ? EntityType.PLAYER : EntityType.BOT;
+            currentTurn = EntityType.PLAYER; // (Random.Range(0, 2) == 1) ? EntityType.PLAYER : EntityType.BOT;
             m_isFirstTurn = false;
 
         } else {
