@@ -9,7 +9,6 @@ public class Piece : MonoBehaviour
     [SerializeField] private SnapInteractor m_snapInteractor;
     [SerializeField] private GameObject m_visualGameObject;
 
-    [HideInInspector] public bool isSelected = false;
     [HideInInspector] public bool isPlayer = true;
 
     private Manager m_manager;
