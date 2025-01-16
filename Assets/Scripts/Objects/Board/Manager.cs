@@ -25,7 +25,7 @@ public class Manager : MonoBehaviour
 {
 
     private string[][] m_currentBoardState = {
-        new string[] { "", "", ""},
+        new string[] { "", "", "" },
         new string[] { "", "", "" },
         new string[] { "", "", "" }
     };
