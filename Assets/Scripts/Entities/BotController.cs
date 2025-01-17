@@ -11,10 +11,10 @@ public class BotController : Entity {
     [Header("Algorithm")]
     [SerializeField] private RandomMove m_randomMove;
     [SerializeField] private Minimax m_minimax;
+    [SerializeField] private AlphaBeta m_alpaBeta;
 
     private string[][] m_boardState;
     private int m_indexPicked = -1;
-    private Coroutine m_currentOnGoingTask = null;
 
     private string m_player;
     private string m_bot;
@@ -31,6 +31,9 @@ public class BotController : Entity {
             m_minimax.SetController(this);
         }
 
+        if (m_alpaBeta != null) {
+            m_alpaBeta.SetController(this);
+        }
 
         m_manager.onGameReset += OnGameReset;
 
@@ -51,15 +54,17 @@ public class BotController : Entity {
         switch(m_manager.algorithmUsed) {
             case AlgorithmType.NONE:
                 algorithmUsed = m_randomMove;
-                algorithmUsed.Calculate();
                 break;
             case AlgorithmType.MINIMAX:
                 algorithmUsed = m_minimax;
-                algorithmUsed.Calculate();
                 break;
             case AlgorithmType.ALPHABETA:
+                algorithmUsed = m_alpaBeta;
                 break;
         }
+
+        if (algorithmUsed != null)
+            algorithmUsed.Calculate();
 
     }
 
@@ -81,9 +86,7 @@ public class BotController : Entity {
     }
 
     protected override void GeneratePiece() {
-        
-        m_currentOnGoingTask = null;
-        
+
         GameObject obj = Instantiate(m_piecePrefab);
         Piece piece = obj.GetComponent<Piece>();
 

@@ -22,8 +22,15 @@ public class RandomMove : Algorithm {
     }
 
     public override void Calculate() {
-        if (m_controller == null) { Debug.Log("Controller Is Not Defined"); return; }
+        
+        if (m_controller == null) { 
+            Debug.Log("Controller Is Not Defined"); 
+            return; 
+        }
+
+        StopOnGoingTask();
         m_onGoingTask = StartCoroutine(CalculateRandomMove());
+    
     }
 
 }
