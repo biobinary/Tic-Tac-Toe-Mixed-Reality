@@ -31,12 +31,12 @@ public class Manager : MonoBehaviour
     };
 
     // Base Event Callback
-    public System.Action onGameStart;
-    public System.Action<GameResultType> onGameEnd;
-    public System.Action onGameReset;
-    public System.Action onResetConfiguration;
-    public System.Action onChangeTurn;
-    public System.Action onChangeStats;
+    public event System.Action onGameStart;
+    public event System.Action<GameResultType> onGameEnd;
+    public event System.Action onGameReset;
+    public event System.Action onResetConfiguration;
+    public event System.Action onChangeTurn;
+    public event System.Action onChangeStats;
 
     // Game Properties
     public PieceType playerPiece { get; private set; }
