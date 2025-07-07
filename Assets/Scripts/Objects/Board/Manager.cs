@@ -11,10 +11,6 @@ namespace GlobalType {
         CROSS, CIRCLE
     }
 
-    public enum AlgorithmType {
-        MINIMAX, ALPHABETA, NONE
-    }
-
     public enum GameResultType {
         WIN, LOSE, DRAW
     }
@@ -40,8 +36,8 @@ public class Manager : MonoBehaviour
 
     // Game Properties
     public PieceType playerPiece { get; private set; }
-    public AlgorithmType algorithmUsed { get; private set; }
     public EntityType currentTurn { get; private set; }
+    public IAlgorithm algorithmUsed { get; private set; }
 
     // Player Statistics
     public int winAmount { get; private set; } = 0;
@@ -50,7 +46,7 @@ public class Manager : MonoBehaviour
 
     private bool m_isFirstTurn = true;
 
-    public void StartGame(PieceType playerPiece, AlgorithmType algorithmUsed) {
+    public void StartGame(PieceType playerPiece, IAlgorithm algorithmUsed) {
 
         this.playerPiece = playerPiece;
         this.algorithmUsed = algorithmUsed;

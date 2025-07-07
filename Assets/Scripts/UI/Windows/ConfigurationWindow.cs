@@ -37,17 +37,17 @@ public class ConfigurationWindow : MonoBehaviour
         }
 
         // Configure Algorithm Used
-        GlobalType.AlgorithmType algorithmUsed;
+        IAlgorithm algorithmUsed;
 
         switch (m_algorithmSelector.GetFirstActiveToggle().name.ToLower()) {
             case "minimax":
-                algorithmUsed = GlobalType.AlgorithmType.MINIMAX;
+                algorithmUsed = new MinimaxAlgorithm();
                 break;
             case "alphabeta":
-                algorithmUsed = GlobalType.AlgorithmType.ALPHABETA;
+                algorithmUsed = new AlphaBetaAlgorithm();
                 break;
             default:
-                algorithmUsed = GlobalType.AlgorithmType.NONE;
+                algorithmUsed = new RandomMoveAlgorithm();
                 break;
         }
 

@@ -25,6 +25,8 @@ public class EntityManager : MonoBehaviour
 
     private void OnGameStart() {
 
+        m_botController.SetAlgorithm(m_manager.algorithmUsed);
+
         if (m_manager.playerPiece == GlobalType.PieceType.CROSS) {
             m_playerController.SetPiecePrefab(m_crossPiece);
             m_botController.SetPiecePrefab(m_circlePiece);

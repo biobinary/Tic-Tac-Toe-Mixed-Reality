@@ -6,15 +6,9 @@ public class BotController : MonoBehaviour, IEntity {
     [SerializeField]
     private CellManager m_cellManager;
 
-    [Space]
-
-    [Header("Algorithm")]
-    [SerializeField] private RandomMove m_randomMove;
-    [SerializeField] private Minimax m_minimax;
-    [SerializeField] private AlphaBeta m_alpaBeta;
-
 	private GameObject m_piecePrefab;
 	private Manager m_manager;
+    private IAlgorithm m_algorithm;
 
 	private string[][] m_boardState;
     private int m_indexPicked = -1;
@@ -30,20 +24,10 @@ public class BotController : MonoBehaviour, IEntity {
         m_manager.onGameReset += OnGameReset;
     }
 
-	private void Start() {
-
-        if (m_randomMove != null) {
-            m_randomMove.SetController(this);
-        }
-
-        if (m_minimax != null) {
-            m_minimax.SetController(this);
-        }
-
-        if (m_alpaBeta != null) {
-            m_alpaBeta.SetController(this);
-        }
-
+    public void SetAlgorithm(IAlgorithm algorithm) {
+        if( algorithm == null || algorithm == m_algorithm) return;
+        m_algorithm = algorithm;
+        m_algorithm.SetController(this);
     }
 
     private void OnGameReset() {
@@ -56,22 +40,8 @@ public class BotController : MonoBehaviour, IEntity {
         m_player = m_manager.playerPiece == PieceType.CROSS ? "X" : "O";
         m_bot = m_manager.playerPiece == PieceType.CROSS ? "O" : "X";
 
-        Algorithm algorithmUsed = null;
-
-        switch(m_manager.algorithmUsed) {
-            case AlgorithmType.NONE:
-                algorithmUsed = m_randomMove;
-                break;
-            case AlgorithmType.MINIMAX:
-                algorithmUsed = m_minimax;
-                break;
-            case AlgorithmType.ALPHABETA:
-                algorithmUsed = m_alpaBeta;
-                break;
-        }
-
-        if (algorithmUsed != null)
-            algorithmUsed.Calculate();
+        if (m_algorithm != null)
+            m_algorithm.Calculate();
 
     }
 
