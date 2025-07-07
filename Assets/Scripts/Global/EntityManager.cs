@@ -15,6 +15,7 @@ public class EntityManager : MonoBehaviour
 
     private void Awake() {
         m_manager = FindAnyObjectByType<Manager>();
+        m_botController.SetManager(m_manager);
     }
 
     private void Start() {

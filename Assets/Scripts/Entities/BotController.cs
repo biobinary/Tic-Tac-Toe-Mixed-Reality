@@ -1,7 +1,7 @@
 using UnityEngine;
 using GlobalType;
 
-public class BotController : Entity {
+public class BotController : MonoBehaviour, IEntity {
 
     [SerializeField]
     private CellManager m_cellManager;
@@ -13,7 +13,10 @@ public class BotController : Entity {
     [SerializeField] private Minimax m_minimax;
     [SerializeField] private AlphaBeta m_alpaBeta;
 
-    private string[][] m_boardState;
+	private GameObject m_piecePrefab;
+	private Manager m_manager;
+
+	private string[][] m_boardState;
     private int m_indexPicked = -1;
 
     private string m_player;
@@ -21,7 +24,13 @@ public class BotController : Entity {
 
     public System.Action stopOnGoingTask;
 
-    private void Start() {
+    public void SetManager(Manager manager) {
+        if (manager == null || manager == m_manager) return;
+        m_manager = manager;
+        m_manager.onGameReset += OnGameReset;
+    }
+
+	private void Start() {
 
         if (m_randomMove != null) {
             m_randomMove.SetController(this);
@@ -35,15 +44,13 @@ public class BotController : Entity {
             m_alpaBeta.SetController(this);
         }
 
-        m_manager.onGameReset += OnGameReset;
-
     }
 
     private void OnGameReset() {
         stopOnGoingTask?.Invoke();
     }
 
-    public override void DoTurn() {
+    public void DoTurn() {
 
         m_boardState = m_manager.GetCurrentBoardState();
         m_player = m_manager.playerPiece == PieceType.CROSS ? "X" : "O";
@@ -85,7 +92,7 @@ public class BotController : Entity {
         GeneratePiece();
     }
 
-    protected override void GeneratePiece() {
+    public void GeneratePiece() {
 
         GameObject obj = Instantiate(m_piecePrefab);
         Piece piece = obj.GetComponent<Piece>();
@@ -94,5 +101,9 @@ public class BotController : Entity {
         m_cellManager.InjectPiece(piece, m_indexPicked);
     
     }
+
+	public void SetPiecePrefab(GameObject prefab) {
+		m_piecePrefab = prefab;
+	}
 
 }
