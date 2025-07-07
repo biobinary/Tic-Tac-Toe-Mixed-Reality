@@ -3,18 +3,17 @@ using Oculus.Interaction;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CellVisualHightlighter : MonoBehaviour {
+public class CellVisualHighlighter : MonoBehaviour {
 
+	[SerializeField] private Manager m_manager;
 	[SerializeField] private List<SnapInteractable> m_snapInteractables = new();
     [SerializeField] private GameObject m_highlightMesh;
 	[SerializeField] Mesh m_circleMesh;
 	[SerializeField] Mesh m_crossMesh;
 
 	private SnapCellInteractableListener m_cellInteractableListener;
-	private Manager m_manager;
 
 	private void Awake() {
-		m_manager = FindAnyObjectByType<Manager>();
 		m_cellInteractableListener = new(m_snapInteractables);
 		m_cellInteractableListener.OnStateChange += HandleOnStateChange;
 	}

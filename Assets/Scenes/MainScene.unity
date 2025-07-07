@@ -758,7 +758,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b2b1bb57ef9a14eaa51257ae5dfd51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_controller: {fileID: 0}
 --- !u!1 &82967784
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,10 +2283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3bd5c84aae0e0b47b6173fc4b5f0709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_controller: {fileID: 0}
-  m_maxDepth: 6
-  m_maxIterationCount: 200
-  m_randomMoveAlgorithm: {fileID: 79007649}
 --- !u!1 &231512983
 GameObject:
   m_ObjectHideFlags: 0
@@ -3506,10 +3501,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48451f5f15875134792daa3766b19a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_controller: {fileID: 0}
-  m_maxDepth: 6
-  m_maxIterationCount: 100
-  m_randomMoveAlgorithm: {fileID: 79007649}
 --- !u!1 &301044480
 GameObject:
   m_ObjectHideFlags: 0
@@ -7427,6 +7418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e183cbd46512b749b3c41064e4c795f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_manager: {fileID: 289746191}
   m_snapInteractables:
   - {fileID: 901798853}
   - {fileID: 340556352}
@@ -7449,6 +7441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f341bfc298d14549b0c898d6e08effe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_manager: {fileID: 289746191}
   m_snapInteractables:
   - {fileID: 901798853}
   - {fileID: 340556352}
