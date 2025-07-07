@@ -45,7 +45,7 @@ public class AlphaBetaAlgorithm : IAlgorithm {
 
 						if (
 							m_algorithmUtilities.IsTerminalState(m_controller, currentState.board, out score, currentState.depth) || 
-							currentState.depth >= 5) {
+							currentState.depth >= 10) {
 							
 							currentState.value = score;
 							stack.Pop();

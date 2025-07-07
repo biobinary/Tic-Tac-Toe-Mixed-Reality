@@ -5,60 +5,36 @@ using GlobalType;
 
 public class CellManager : MonoBehaviour {
 
-    [SerializeField] private List<SnapCell> m_cells = new List<SnapCell>();
-    [SerializeField] private GameObject m_highlightMesh;
-    [SerializeField] Mesh m_circleMesh;
-    [SerializeField] Mesh m_crossMesh;
-
-    private Manager m_manager;
+	[SerializeField] private List<SnapInteractable> m_snapInteractables = new();
+	
+	private Manager m_manager;
+	private SnapCellInteractableListener m_listener;
 
     private void Awake() {
         m_manager = FindAnyObjectByType<Manager>();
-    }
+		m_listener = new(m_snapInteractables);
+		m_listener.OnInteractorViewAdded += HandleInteractorAdded;
+	}
 
-    private void Start() {
+	private void HandleInteractorAdded(int cellIndex, IInteractorView view) {
 
-        foreach (var cell in m_cells) {
-            cell.SetManager(this);
-        }
+		GameObject obj = (view.Data as MonoBehaviour).gameObject;
+		GameObject parentObj = obj.transform.parent.gameObject;
 
-        m_manager.onGameStart += OnGameStart;
-        m_highlightMesh.SetActive(false);
+		Piece piece = parentObj.GetComponent<Piece>();
+		piece.DisableInteraction();
 
-    }
+		if (piece.isPlayer)
+			m_manager.InsertPiece(cellIndex, EntityType.PLAYER);
+		else
+			m_manager.InsertPiece(cellIndex, EntityType.BOT);
 
-    private void OnGameStart() {
-
-        MeshFilter filter = m_highlightMesh.GetComponent<MeshFilter>();
-
-        if (m_manager.playerPiece == PieceType.CROSS)
-            filter.mesh = m_crossMesh;
-        else
-            filter.mesh = m_circleMesh;
-
-    }
-
-    public void EnableHighlight(Vector3 position) {
-        m_highlightMesh.transform.localPosition = position;
-        m_highlightMesh.SetActive(true);
-    }
-
-    public void DisableHighlight() {
-        m_highlightMesh.SetActive(false);
-    }
-
-    public void HandlePiecePlaced(SnapCell cell, EntityType entityType) {
-        m_manager.InsertPiece(m_cells.IndexOf(cell), entityType);
-    }
+	}
 
     public void InjectPiece(Piece piece, int indexPosition) {
-        
-        SnapCell cell = m_cells[indexPosition];
-        SnapInteractable snapInteractable = cell.GetSnapInteractableComponent();
-
-        piece.transform.position = cell.transform.position;
+        SnapInteractable snapInteractable = m_snapInteractables[indexPosition];
+		piece.transform.position = snapInteractable.transform.position;
         piece.InjectInteractable(snapInteractable);
-
     }
 
 }
