@@ -1,26 +1,25 @@
 using GlobalType;
 using Oculus.Interaction;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CellVisualHighlighter : MonoBehaviour {
 
 	[SerializeField] private Manager m_manager;
-	[SerializeField] private List<SnapInteractable> m_snapInteractables = new();
+	[SerializeField] private SnapInteractable m_snapInteractable;
     [SerializeField] private GameObject m_highlightMesh;
 	[SerializeField] Mesh m_circleMesh;
 	[SerializeField] Mesh m_crossMesh;
 
-	private SnapCellInteractableListener m_cellInteractableListener;
-
-	private void Awake() {
-		m_cellInteractableListener = new(m_snapInteractables);
-		m_cellInteractableListener.OnStateChange += HandleOnStateChange;
-	}
-
 	private void Start() {
-		m_manager.onGameStart += OnGameStart;
+
+		if (m_manager != null)
+			m_manager.onGameStart += OnGameStart;
+
+		if (m_snapInteractable != null)
+			m_snapInteractable.WhenStateChanged += HandleOnStateChange;
+
 		m_highlightMesh.SetActive(false);
+
 	}
 
 	private void OnGameStart() {
@@ -34,6 +33,16 @@ public class CellVisualHighlighter : MonoBehaviour {
 
 	}
 
+	private void OnDisable() {
+		
+		if(m_manager != null)
+			m_manager.onGameStart -= OnGameStart;
+
+		if (m_snapInteractable != null)
+			m_snapInteractable.WhenStateChanged -= HandleOnStateChange;
+
+	}
+
 	public void EnableHighlight(Vector3 position) {
 		m_highlightMesh.transform.localPosition = position;
 		m_highlightMesh.SetActive(true);
@@ -43,10 +52,10 @@ public class CellVisualHighlighter : MonoBehaviour {
 		m_highlightMesh.SetActive(false);
 	}
 
-	private void HandleOnStateChange(SnapInteractable interactable, InteractableStateChangeArgs args) {
+	private void HandleOnStateChange(InteractableStateChangeArgs args) {
 
 		if (args.NewState == InteractableState.Hover) {
-			EnableHighlight(interactable.transform.localPosition);
+			EnableHighlight(transform.localPosition);
 
 		} else if (args.PreviousState == InteractableState.Hover) {
 			DisableHighlight();

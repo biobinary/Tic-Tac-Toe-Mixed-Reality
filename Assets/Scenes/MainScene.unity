@@ -4771,6 +4771,8 @@ GameObject:
   m_Component:
   - component: {fileID: 340556351}
   - component: {fileID: 340556352}
+  - component: {fileID: 340556353}
+  - component: {fileID: 340556354}
   m_Layer: 0
   m_Name: SnapInteractable
   m_TagString: Untagged
@@ -4812,6 +4814,36 @@ MonoBehaviour:
   _rigidbody: {fileID: 1120504653}
   _snapPoseDelegate: {fileID: 0}
   _movementProvider: {fileID: 0}
+--- !u!114 &340556353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340556350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f341bfc298d14549b0c898d6e08effe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_manager: {fileID: 289746191}
+  m_snapInteractable: {fileID: 340556352}
+  m_highlightMesh: {fileID: 1303283973}
+  m_circleMesh: {fileID: -7454891412866928627, guid: 308beb5b25f1100448c1da4037e21d3b, type: 3}
+  m_crossMesh: {fileID: -3065882936074607397, guid: 05473970c628fe54c8abfa7af37d8d34, type: 3}
+--- !u!114 &340556354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340556350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8109b3eff0d734b8251c858f245750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: {fileID: 340556352}
 --- !u!1 &342762357
 GameObject:
   m_ObjectHideFlags: 0
@@ -7373,7 +7405,6 @@ GameObject:
   m_Component:
   - component: {fileID: 561587267}
   - component: {fileID: 561587269}
-  - component: {fileID: 561587270}
   m_Layer: 0
   m_Name: Cell Manager
   m_TagString: Untagged
@@ -7419,42 +7450,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_manager: {fileID: 289746191}
-  m_snapInteractables:
-  - {fileID: 901798853}
-  - {fileID: 340556352}
-  - {fileID: 1091252221}
-  - {fileID: 1530487848}
-  - {fileID: 1665915548}
-  - {fileID: 690980797}
-  - {fileID: 1231714388}
-  - {fileID: 1691062319}
-  - {fileID: 622716532}
---- !u!114 &561587270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 561587266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f341bfc298d14549b0c898d6e08effe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_manager: {fileID: 289746191}
-  m_snapInteractables:
-  - {fileID: 901798853}
-  - {fileID: 340556352}
-  - {fileID: 1091252221}
-  - {fileID: 1530487848}
-  - {fileID: 1665915548}
-  - {fileID: 690980797}
-  - {fileID: 1231714388}
-  - {fileID: 1691062319}
-  - {fileID: 622716532}
-  m_highlightMesh: {fileID: 1303283973}
-  m_circleMesh: {fileID: -7454891412866928627, guid: 308beb5b25f1100448c1da4037e21d3b, type: 3}
-  m_crossMesh: {fileID: -3065882936074607397, guid: 05473970c628fe54c8abfa7af37d8d34, type: 3}
+  m_snapCellListener:
+  - {fileID: 901798855}
+  - {fileID: 340556354}
+  - {fileID: 1091252223}
+  - {fileID: 1530487850}
+  - {fileID: 1665915550}
+  - {fileID: 690980799}
+  - {fileID: 1231714390}
+  - {fileID: 1691062321}
+  - {fileID: 622716534}
 --- !u!1 &564086513
 GameObject:
   m_ObjectHideFlags: 0
@@ -8490,6 +8495,8 @@ GameObject:
   m_Component:
   - component: {fileID: 622716531}
   - component: {fileID: 622716532}
+  - component: {fileID: 622716533}
+  - component: {fileID: 622716534}
   m_Layer: 0
   m_Name: SnapInteractable
   m_TagString: Untagged
@@ -8531,6 +8538,36 @@ MonoBehaviour:
   _rigidbody: {fileID: 1120504653}
   _snapPoseDelegate: {fileID: 0}
   _movementProvider: {fileID: 0}
+--- !u!114 &622716533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622716530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f341bfc298d14549b0c898d6e08effe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_manager: {fileID: 289746191}
+  m_snapInteractable: {fileID: 622716532}
+  m_highlightMesh: {fileID: 1303283973}
+  m_circleMesh: {fileID: -7454891412866928627, guid: 308beb5b25f1100448c1da4037e21d3b, type: 3}
+  m_crossMesh: {fileID: -3065882936074607397, guid: 05473970c628fe54c8abfa7af37d8d34, type: 3}
+--- !u!114 &622716534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622716530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8109b3eff0d734b8251c858f245750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: {fileID: 622716532}
 --- !u!1 &626528540
 GameObject:
   m_ObjectHideFlags: 0
@@ -9235,6 +9272,8 @@ GameObject:
   m_Component:
   - component: {fileID: 690980796}
   - component: {fileID: 690980797}
+  - component: {fileID: 690980798}
+  - component: {fileID: 690980799}
   m_Layer: 0
   m_Name: SnapInteractable
   m_TagString: Untagged
@@ -9276,6 +9315,36 @@ MonoBehaviour:
   _rigidbody: {fileID: 1120504653}
   _snapPoseDelegate: {fileID: 0}
   _movementProvider: {fileID: 0}
+--- !u!114 &690980798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690980795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f341bfc298d14549b0c898d6e08effe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_manager: {fileID: 289746191}
+  m_snapInteractable: {fileID: 690980797}
+  m_highlightMesh: {fileID: 1303283973}
+  m_circleMesh: {fileID: -7454891412866928627, guid: 308beb5b25f1100448c1da4037e21d3b, type: 3}
+  m_crossMesh: {fileID: -3065882936074607397, guid: 05473970c628fe54c8abfa7af37d8d34, type: 3}
+--- !u!114 &690980799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690980795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8109b3eff0d734b8251c858f245750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: {fileID: 690980797}
 --- !u!1 &709050472
 GameObject:
   m_ObjectHideFlags: 0
@@ -11968,6 +12037,8 @@ GameObject:
   m_Component:
   - component: {fileID: 901798852}
   - component: {fileID: 901798853}
+  - component: {fileID: 901798854}
+  - component: {fileID: 901798855}
   m_Layer: 0
   m_Name: SnapInteractable
   m_TagString: Untagged
@@ -12009,6 +12080,36 @@ MonoBehaviour:
   _rigidbody: {fileID: 1120504653}
   _snapPoseDelegate: {fileID: 0}
   _movementProvider: {fileID: 0}
+--- !u!114 &901798854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901798851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f341bfc298d14549b0c898d6e08effe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_manager: {fileID: 289746191}
+  m_snapInteractable: {fileID: 901798853}
+  m_highlightMesh: {fileID: 1303283973}
+  m_circleMesh: {fileID: -7454891412866928627, guid: 308beb5b25f1100448c1da4037e21d3b, type: 3}
+  m_crossMesh: {fileID: -3065882936074607397, guid: 05473970c628fe54c8abfa7af37d8d34, type: 3}
+--- !u!114 &901798855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901798851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8109b3eff0d734b8251c858f245750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: {fileID: 901798853}
 --- !u!1 &907387271
 GameObject:
   m_ObjectHideFlags: 0
@@ -14311,6 +14412,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1091252220}
   - component: {fileID: 1091252221}
+  - component: {fileID: 1091252222}
+  - component: {fileID: 1091252223}
   m_Layer: 0
   m_Name: SnapInteractable
   m_TagString: Untagged
@@ -14352,6 +14455,36 @@ MonoBehaviour:
   _rigidbody: {fileID: 1120504653}
   _snapPoseDelegate: {fileID: 0}
   _movementProvider: {fileID: 0}
+--- !u!114 &1091252222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091252219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f341bfc298d14549b0c898d6e08effe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_manager: {fileID: 289746191}
+  m_snapInteractable: {fileID: 1091252221}
+  m_highlightMesh: {fileID: 1303283973}
+  m_circleMesh: {fileID: -7454891412866928627, guid: 308beb5b25f1100448c1da4037e21d3b, type: 3}
+  m_crossMesh: {fileID: -3065882936074607397, guid: 05473970c628fe54c8abfa7af37d8d34, type: 3}
+--- !u!114 &1091252223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091252219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8109b3eff0d734b8251c858f245750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: {fileID: 1091252221}
 --- !u!1 &1094323885
 GameObject:
   m_ObjectHideFlags: 0
@@ -15956,6 +16089,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1231714387}
   - component: {fileID: 1231714388}
+  - component: {fileID: 1231714389}
+  - component: {fileID: 1231714390}
   m_Layer: 0
   m_Name: SnapInteractable
   m_TagString: Untagged
@@ -15997,6 +16132,36 @@ MonoBehaviour:
   _rigidbody: {fileID: 1120504653}
   _snapPoseDelegate: {fileID: 0}
   _movementProvider: {fileID: 0}
+--- !u!114 &1231714389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231714386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f341bfc298d14549b0c898d6e08effe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_manager: {fileID: 289746191}
+  m_snapInteractable: {fileID: 1231714388}
+  m_highlightMesh: {fileID: 1303283973}
+  m_circleMesh: {fileID: -7454891412866928627, guid: 308beb5b25f1100448c1da4037e21d3b, type: 3}
+  m_crossMesh: {fileID: -3065882936074607397, guid: 05473970c628fe54c8abfa7af37d8d34, type: 3}
+--- !u!114 &1231714390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231714386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8109b3eff0d734b8251c858f245750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: {fileID: 1231714388}
 --- !u!1 &1231842669
 GameObject:
   m_ObjectHideFlags: 0
@@ -20161,6 +20326,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1530487847}
   - component: {fileID: 1530487848}
+  - component: {fileID: 1530487849}
+  - component: {fileID: 1530487850}
   m_Layer: 0
   m_Name: SnapInteractable
   m_TagString: Untagged
@@ -20202,6 +20369,36 @@ MonoBehaviour:
   _rigidbody: {fileID: 1120504653}
   _snapPoseDelegate: {fileID: 0}
   _movementProvider: {fileID: 0}
+--- !u!114 &1530487849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530487846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f341bfc298d14549b0c898d6e08effe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_manager: {fileID: 289746191}
+  m_snapInteractable: {fileID: 1530487848}
+  m_highlightMesh: {fileID: 1303283973}
+  m_circleMesh: {fileID: -7454891412866928627, guid: 308beb5b25f1100448c1da4037e21d3b, type: 3}
+  m_crossMesh: {fileID: -3065882936074607397, guid: 05473970c628fe54c8abfa7af37d8d34, type: 3}
+--- !u!114 &1530487850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530487846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8109b3eff0d734b8251c858f245750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: {fileID: 1530487848}
 --- !u!1 &1532302386
 GameObject:
   m_ObjectHideFlags: 0
@@ -22433,6 +22630,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1665915547}
   - component: {fileID: 1665915548}
+  - component: {fileID: 1665915549}
+  - component: {fileID: 1665915550}
   m_Layer: 0
   m_Name: SnapInteractable
   m_TagString: Untagged
@@ -22474,6 +22673,36 @@ MonoBehaviour:
   _rigidbody: {fileID: 1120504653}
   _snapPoseDelegate: {fileID: 0}
   _movementProvider: {fileID: 0}
+--- !u!114 &1665915549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665915546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f341bfc298d14549b0c898d6e08effe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_manager: {fileID: 289746191}
+  m_snapInteractable: {fileID: 1665915548}
+  m_highlightMesh: {fileID: 1303283973}
+  m_circleMesh: {fileID: -7454891412866928627, guid: 308beb5b25f1100448c1da4037e21d3b, type: 3}
+  m_crossMesh: {fileID: -3065882936074607397, guid: 05473970c628fe54c8abfa7af37d8d34, type: 3}
+--- !u!114 &1665915550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665915546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8109b3eff0d734b8251c858f245750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: {fileID: 1665915548}
 --- !u!1 &1668949982
 GameObject:
   m_ObjectHideFlags: 0
@@ -23259,6 +23488,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1691062318}
   - component: {fileID: 1691062319}
+  - component: {fileID: 1691062320}
+  - component: {fileID: 1691062321}
   m_Layer: 0
   m_Name: SnapInteractable
   m_TagString: Untagged
@@ -23300,6 +23531,36 @@ MonoBehaviour:
   _rigidbody: {fileID: 1120504653}
   _snapPoseDelegate: {fileID: 0}
   _movementProvider: {fileID: 0}
+--- !u!114 &1691062320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691062317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f341bfc298d14549b0c898d6e08effe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_manager: {fileID: 289746191}
+  m_snapInteractable: {fileID: 1691062319}
+  m_highlightMesh: {fileID: 1303283973}
+  m_circleMesh: {fileID: -7454891412866928627, guid: 308beb5b25f1100448c1da4037e21d3b, type: 3}
+  m_crossMesh: {fileID: -3065882936074607397, guid: 05473970c628fe54c8abfa7af37d8d34, type: 3}
+--- !u!114 &1691062321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691062317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8109b3eff0d734b8251c858f245750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: {fileID: 1691062319}
 --- !u!1 &1693629404
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,16 +6,27 @@ using GlobalType;
 public class CellManager : MonoBehaviour {
 
 	[SerializeField] private Manager m_manager;
-	[SerializeField] private List<SnapInteractable> m_snapInteractables = new();
-	
-	private SnapCellInteractableListener m_listener;
+	[SerializeField] private List<SnapCellListener> m_snapCellListener = new();
 
-    private void Awake() {
-		m_listener = new(m_snapInteractables);
-		m_listener.OnInteractorViewAdded += HandleInteractorAdded;
+	private void OnEnable() {
+
+		if (m_snapCellListener.Count > 0) {
+			foreach (SnapCellListener listener in m_snapCellListener) {
+				listener.OnSelectingInteractorViewAdded += HandleInteractorAdded;
+			}
+		}
+
 	}
 
-	private void HandleInteractorAdded(int cellIndex, IInteractorView view) {
+	private void OnDisable() {
+		if (m_snapCellListener.Count > 0) {
+			foreach (SnapCellListener listener in m_snapCellListener) {
+				listener.OnSelectingInteractorViewAdded -= HandleInteractorAdded;
+			}
+		}
+	}
+
+	public void HandleInteractorAdded(SnapCellListener listener, IInteractorView view) {
 
 		GameObject obj = (view.Data as MonoBehaviour).gameObject;
 		GameObject parentObj = obj.transform.parent.gameObject;
@@ -24,14 +35,14 @@ public class CellManager : MonoBehaviour {
 		piece.DisableInteraction();
 
 		if (piece.isPlayer)
-			m_manager.InsertPiece(cellIndex, EntityType.PLAYER);
+			m_manager.InsertPiece(m_snapCellListener.IndexOf(listener), EntityType.PLAYER);
 		else
-			m_manager.InsertPiece(cellIndex, EntityType.BOT);
+			m_manager.InsertPiece(m_snapCellListener.IndexOf(listener), EntityType.BOT);
 
 	}
 
     public void InjectPiece(Piece piece, int indexPosition) {
-        SnapInteractable snapInteractable = m_snapInteractables[indexPosition];
+        SnapInteractable snapInteractable = m_snapCellListener[indexPosition].interactable;
 		piece.transform.position = snapInteractable.transform.position;
         piece.InjectInteractable(snapInteractable);
     }
